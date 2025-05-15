@@ -14,16 +14,16 @@ browser = play.chromium.launch(headless=False, args=["--start-maximized"],slow_m
 page = browser.new_page(no_viewport=True)
 
 page.goto("https://finance.naver.com")
-page.pause()
+
 
 # 버튼 클릭 자동화
-page.get_by_role("lick", name="국내증시").click()
-page.get_by_role("listitem").filter(has_text="시가총액").nth(1).click()
-page.pause()
+page.get_by_role("link", name="국내증시").click()
+page.get_by_role("link", name="시가총액").first.click()
 
 print(page.locator("table", has_text="코스피").locator("thead > tr > th").all_inner_texts())
-print(page.locator("table", has_text="코스피").locator("thead > tr").nth(1).locator("td").all_inner_texts())
-page.pause
+print(page.locator("table", has_text="코스피").locator("tbody > tr").nth(1).locator("td").all_inner_texts())
+
+
 
 # 파일로 저장하기
 tag_table = page.locator("table",has_text="코스피")

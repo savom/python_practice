@@ -22,7 +22,7 @@ df_raw = pd.read_csv(CSV)
 df_raw["시가총액"] = df_raw["시가총액"].str.replace(",","").astype("int")
 
 # 전체 DataFrame을 시가총액 기주능로 정렬(열만 정렬 x)
-df_raw["시가총액"] = df_raw.sort_values(by="시가총액",ascending=False)
+df_raw = df_raw.sort_values(by="시가총액",ascending=False)
 
 df_raw["누적비율"] = df_raw["시가총액"].cumsum() / df_raw["시가총액"].sum()
 
